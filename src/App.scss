@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
+@import './shared.scss';
+
+* {
+  font-family: "Madimi One", sans-serif;
+  @include txtShadow(white, black);
+  margin: 0;
+  padding: 0;
+  & button {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 1px;
+    @include txtShadow(black, white);
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      border: 2px solid black;
+    }
+  }
+}
+
+.ecommerce {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(white, $blu);
+};
