@@ -1,8 +1,11 @@
-@import '../../shared.scss';
+@import "../../shared.scss";
 
 .foot {
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: $pnk;
   border-top: 5px solid white;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
 }
