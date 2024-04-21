@@ -1,11 +1,11 @@
-.carousel{
+.carousel {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 5px;
 }
-.carBtn{
+.carBtn {
   width: 40px;
   height: 40px;
   display: flex;
@@ -13,5 +13,8 @@
   align-items: center;
 }
 .img {
-width: 30px;
+  width: 30px;
+}
+.thumbnail{
+  border-radius: 20px;
 }

@@ -1,0 +1,35 @@
+@import "../../shared.scss";
+
+.card {
+  width: 200px;
+  height: 250px;
+  background-color: white;
+  border: 5px solid $pnk;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.thumbnail {
+  width: 150px;
+  border-radius: 20px;
+}
+.name {
+  font-size: 1.3em;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+.btns {
+  display: flex;
+  position: absolute;
+  right: 25px;
+  top: 125px;
+}

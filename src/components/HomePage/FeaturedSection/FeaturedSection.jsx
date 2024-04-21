@@ -13,20 +13,23 @@ const FeaturedSection = ({ featuredItems }) => {
   };
 
   return (
-    <section className={styles.featured}>
-      <Carousel
-        featuredItems={featuredItems}
-        itemID={currentItemID}
-        setCurrentItemID={setCurrentItemID}
-      />
-      <div className={styles.info}>
-        <button onClick={handleClick}>
-          <h2>{tempItems[currentItemID].name}</h2>
-        </button>
-        <p>${tempItems[currentItemID].price}</p>
-        <div className={styles.btns}>
-          <WishlistBtn itemID={currentItemID} />
-          <CartBtn itemID={currentItemID} />
+    <section className={styles.section}>
+      <h2>Featured</h2>
+      <div className={styles.featured}>
+        <Carousel
+          featuredItems={featuredItems}
+          itemID={currentItemID}
+          setCurrentItemID={setCurrentItemID}
+        />
+        <div className={styles.info}>
+          <button onClick={handleClick}>
+            <h3 className={styles.name}>{tempItems[currentItemID].name}</h3>
+          </button>
+          <p className={styles.price}>${tempItems[currentItemID].price}</p>
+          <div className={styles.btns}>
+            <WishlistBtn itemID={currentItemID} />
+            <CartBtn itemID={currentItemID} />
+          </div>
         </div>
       </div>
     </section>

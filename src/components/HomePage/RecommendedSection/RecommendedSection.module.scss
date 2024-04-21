@@ -1,0 +1,14 @@
+@import '../../../shared.scss';
+
+.cards {
+  // background-color: white;
+  // border: 5px solid $pnk;
+  // border-radius: 40px;
+  // padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}

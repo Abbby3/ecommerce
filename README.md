@@ -59,7 +59,7 @@ Cart page should have the following:
 
 
 ## base features
-# page
+### page
 - home page
   - navbar 
     - logo
@@ -99,7 +99,7 @@ Cart page should have the following:
   - for payment if not implemented
 
 
-# data
+### data
 - item list
   - item
     - id
@@ -126,7 +126,7 @@ Cart page should have the following:
   - item id
 - users(?)
 
-# backend
+### backend
 - id should be category-type-name-variants
   - eg: clo-sho-hee-red-016 for clothes, shoes, heeled shoe, red colour, size 16
 
@@ -151,8 +151,8 @@ Cart page should have the following:
     
   
 
-## optionals
-- # navbar features
+### optionals
+- ### navbar features
   - navbar appears on scroll up
     - change 'mode' (display fixed/absolute) on scroll up/down 
       - looks for down on fixed, looks for up on absolute 
@@ -160,7 +160,7 @@ Cart page should have the following:
   - drop down for extra features
     - could also include list for searching specific category or types?
 
-- # user system
+- ### user system
   - link/icon in navbar
   - login/sign up page
     - hashing
@@ -170,59 +170,59 @@ Cart page should have the following:
   - should default to logged out
   - login in shouldn't clear cart (i hate when it does)
 
-- # currency conversion
+- ### currency conversion
   - displayed on navbar
 
-- # individual variant properties
+- ### individual variant properties
   - stock, price, etc
 
-- # contact page
+- ### contact page
   - form
   - type - review, complaint inquiry?
   - store on firestore
 
-- # search page
+- ### search page
   - filters by category/type/variant
   - search bar separate to filters
     - should look for matches in all name, category, type, variants
   - part of navbar?
 
-- # payment with stripe integration
+- ### payment with stripe integration
   - payment screen from cart page
   - interact with stock in firestore
   - purchase history page
   - number sold on item
   - changes to this page should pull api to ensure correct data
 
-- # recommended 'algorithm'
+- ### recommended 'algorithm'
   - algorith shows random items
     - number of items in wishlist/cart/purchased increases the chance of the associated category and variants appearing
       - maximum increase in chance increases with more items, size variant max chance goes up faster
   - recommended section to replace main section
   - 'something new' section for opposites of recommended?
 
-- # related items
+- ### related items
   - based on type+variants, then category
 
-- # reviews
+- ### reviews
   - default reviews stored on firestore
     - number of pregenerated reviews inversely proportional to stock levels/number sold? only initial no., doesnt change with stock 
   - add reviews through a form
   - star rating based on average of reviews 
   - interacts with user system?
 
-- # wishlist folders
+- ### wishlist folders
   - adds to default section when on home page
   - adds to specific folder when on item modal
   - add and remove folders on wishlist page/item modal
     - removing brings up choice of moving all items to default list or removing from wishlist
 
-- # dev page
+- ### dev page
   - form to add items
   - change item information
   - see orders
 
-- # efficient api usage
+- ### efficient api usage
   - current data pulls/pushes affect the whole collection. 
   - should affect specific part
     - eg adding to wishlist only needs to deal with the user document

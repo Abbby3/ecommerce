@@ -16,11 +16,11 @@ const Navbar = () => {
       <NavLink className={styles.logo} to="/">
         <h1>eCommerce</h1>
       </NavLink>
-      <div className={styles.navbtns}>
-        <NavLink className={styles.navbtn} to="/wishlist">
+      <div className={styles.btns}>
+        <NavLink className={styles.btn} to="/wishlist">
           <img className={styles.btnimg} src={wishlistIcon} alt="wishlist" />
         </NavLink>
-        <NavLink className={styles.navbtn} to="/cart">
+        <NavLink className={styles.btn} to="/cart">
           <img className={styles.btnimg} src={cartIcon} alt="cart" />
         </NavLink>
       </div>

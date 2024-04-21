@@ -1,7 +1,9 @@
 @import "../../../shared.scss";
 
-.featured {
+.section {
   margin-top: 80px;
+}
+.featured {
   background-color: white;
   border: 5px solid $pnk;
   border-radius: 40px;
@@ -17,12 +19,12 @@
 .info {
   width: 250px;
 }
-h2 {
+.name {
   font-size: 2.5em;
   &:hover {
     text-decoration: underline;
   }
 }
-p {
+.price {
   font-size: 1.5em;
 }
