@@ -32,7 +32,7 @@ export const pushData = async (data, collectionName) => {
 
     for (const itemId in data) {
       const docRef = doc(collectionRef, itemId);
-      await setDoc(docRef, data[itemId], { merge: true });
+      await setDoc(docRef, data[itemId], { merge: false });
     }
 
     console.log(`successfully pushed data to ${collectionName}`);

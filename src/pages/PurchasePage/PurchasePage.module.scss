@@ -1,0 +1,21 @@
+@import '../../shared.scss';
+
+.purchase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -36px;
+  margin-left: -178px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.icon {
+  width: 65px;
+  height: 65px;
+}
+.text {
+  & * {
+    @include txtShadow(black, white)
+  }
+}

@@ -22,11 +22,12 @@
 }
 
 .ecommerce {
-  min-width: 100vw;
+  max-width: 100%;
   min-height: 100vh;
   background: linear-gradient(white, $blu);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  position: relative;
+  overflow-x: hidden;
 }

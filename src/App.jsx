@@ -1,5 +1,5 @@
 import "./App.scss";
-import { pullData } from "./services/database";
+import { pullData, pushData } from "./services/database";
 import { tempItems, tempImages, tempWishlist, tempCart } from "./data/tempData";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
