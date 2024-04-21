@@ -1,9 +1,9 @@
 import styles from "./FeaturedSection.module.scss";
-import Carousel from "../../components/Carousel/Carousel";
+import Carousel from "../../../containers/Carousel/Carousel";
 import { useState } from "react";
-import { tempItems } from "../../data/tempData";
-import WishlistBtn from "../WishlistBtn/WishlistBtn";
-import CartBtn from "../CartBtn/CartBtn";
+import { tempItems } from "../../../data/tempData";
+import WishlistBtn from "../../reusable/WishlistBtn/WishlistBtn";
+import CartBtn from "../../reusable/CartBtn/CartBtn";
 
 const FeaturedSection = ({ featuredItems }) => {
   const [currentItemID, setCurrentItemID] = useState(featuredItems[0]);

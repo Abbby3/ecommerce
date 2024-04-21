@@ -1,5 +1,5 @@
 import styles from "./HomePage.module.scss";
-import FeaturedSection from "../../components/FeaturedSection/FeaturedSection";
+import FeaturedSection from "../../components/HomePage/FeaturedSection/FeaturedSection";
 import { randomItems } from "../../services/randomItems";
 
 const HomePage = () => {

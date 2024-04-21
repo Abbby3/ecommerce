@@ -1,0 +1,34 @@
+@import "../../../shared.scss";
+
+.foot {
+  width: 100vw;
+  height: 100px;
+  background-color: $pnk;
+  border-top: 5px solid white;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.group{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.logo {
+  width: 70px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.copyright{
+  margin-right: 20px;
+}
+

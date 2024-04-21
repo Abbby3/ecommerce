@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./WishlistBtn.module.scss";
-import wishlistIcon from "../../assets/wishlistIcon.png";
-import wishlistedIcon from "../../assets/wishlistedIcon.png";
-import { tempWishlist } from "../../data/tempData";
-import { pushData } from "../../services/database";
+import wishlistIcon from "../../../assets/wishlistIcon.png";
+import wishlistedIcon from "../../../assets/wishlistedIcon.png";
+import { tempWishlist } from "../../../data/tempData";
+import { pushData } from "../../../services/database";
 
 const WishlistBtn = ({ itemID, text }) => {
   const isItemWishlisted = tempWishlist.user1.items.includes(itemID);
@@ -34,7 +34,8 @@ const WishlistBtn = ({ itemID, text }) => {
         className={styles.btnimg}
         src={isWishlisted ? wishlistedIcon : wishlistIcon}
         alt="wishlist"
-      />{text}
+      />
+      {text}
     </button>
   );
 };

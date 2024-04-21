@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import wishlistIcon from "../../assets/wishlistIcon.png";
-import cartIcon from "../../assets/cartIcon.png";
+import wishlistIcon from "../../../assets/wishlistIcon.png";
+import cartIcon from "../../../assets/cartIcon.png";
 import { useState } from "react";
 
 const Navbar = () => {
