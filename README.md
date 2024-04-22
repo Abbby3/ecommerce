@@ -55,99 +55,6 @@ Cart page should have the following:
 - [Fake Store](https://fakestoreapi.com/)
 
 
-
-
-
-## base features
-### page
-- home page
-  - navbar 
-    - logo
-    - cart
-    - wishlist
-  - featured section
-    - carousel
-      - scrolls periodically
-        - smooth animation
-      - buttons to manually scroll
-        - resets auto scroll time and increases time until next scroll
-  - sale section
-    - can be removed if no items are on sale
-  - main section
-    - randomly selects items
-    - button to load more items
-  - item modal
-    - carousel, images can be clicked on to view
-    - name, price, variants, add to cart/wishlist
-  - footer 
-- wishlist page
-  - navbar
-  - item list
-    - same item modal from home page
-  - footer
-- cart page
-  - navbar
-  - lists items
-    - remove button
-      - should promp user with modal; are you sure
-    - qty buttons
-      - less than one should act as remove button
-  - changes to this page should send to db, but not take info from it to save time (qty should be counter, etc). purchase page can verify info.
-- 404 page
-  - for incorrect routing
-- under construction page
-  - for payment if not implemented
-
-
-### data
-- item list
-  - item
-    - id
-    - name
-    - thumbnail
-    - sale
-    - stock
-    - price
-    - category for search
-    - type for search
-    - colour for recommended
-    - size for recommended
-  - review list (?)
-    - item rating
-    - review
-      - user
-      - rating
-      - review  
-- images
-  - item id
-- cart
-  - item id
-- wishlist
-  - item id
-- users(?)
-
-### backend
-- id should be category-type-name-variants
-  - eg: clo-sho-hee-red-016 for clothes, shoes, heeled shoe, red colour, size 16
-
-- reusable stuff
-  - button styling
-    - use class, styling in app.scss
-  - cart button
-  - wishlist button
-  - item card component
-  - modal component
-    - takes item id prop, displays item info
-  - wishlist and card is more or less same, function to add/view that takes in wishlist/cart prop?
-  - api pull function
-    - takes item list/wishlist/cart
-    - should be called by list/wishlist/cart function that formats the data
-    - data formatter should be passed as a prop to container
-  - loading anim
-  - navbar
-  - footer
-
-
     
   
 
@@ -158,7 +65,7 @@ Cart page should have the following:
       - looks for down on fixed, looks for up on absolute 
     - turn to fixed on middle click?
   - drop down for extra features
-    - could also include list for searching specific category or types?
+    - could also include list for searching specific category or types
 
 - ### user system
   - link/icon in navbar
@@ -172,23 +79,24 @@ Cart page should have the following:
 
 - ### currency conversion
   - displayed on navbar
+  - saved on user account
 
 - ### individual variant properties
   - stock, price, etc
+  - should be able to purchases an item, and only have that specific variant stock change
 
 - ### smooth featured scrolling
   - should fade new items in, fade previous items out.
 
 - ### contact page
   - form
-  - type - review, complaint inquiry?
-  - store on firestore
+  - type - review, complaint, inquiry, etc
 
 - ### search page
   - filters by category/type/variant
   - search bar separate to filters
     - should look for matches in all name, category, type, variants
-  - part of navbar?
+  - part of navbar
 
 - ### payment with stripe integration
   - payment screen from cart page
@@ -212,7 +120,7 @@ Cart page should have the following:
     - number of pregenerated reviews inversely proportional to stock levels/number sold? only initial no., doesnt change with stock 
   - add reviews through a form
   - star rating based on average of reviews 
-  - interacts with user system?
+  - interacts with user system
 
 - ### wishlist folders
   - adds to default section when on home page
@@ -225,10 +133,12 @@ Cart page should have the following:
   - change item information
   - see orders
 
-- ### efficient api usage
+- ### general backend improvements
   - current data pulls/pushes affect the whole collection. 
-  - should affect specific part
-    - eg adding to wishlist only needs to deal with the user document
+    - should affect specific part
+      - eg adding to wishlist only needs to deal with the user document
+  - especially btns and item card is quite complex and could be simplified
+  - standard formatting across pages, features, etc
 
 
   

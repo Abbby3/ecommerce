@@ -32,7 +32,7 @@
   .btns {
     position: absolute;
     right: 25px;
-    top: 127px;
+    top: 129px;
   }
   .original {
     text-decoration: line-through;
@@ -77,7 +77,7 @@
   .btns {
     position: absolute;
     right: 25px;
-    top: 127px;
+    top: 129px;
   }
 }
 
@@ -125,10 +125,10 @@
     width: 100px;
     border-radius: 20px;
   }
-  .info {
+  .price {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 20px;
     align-items: center;
   }
   .original {

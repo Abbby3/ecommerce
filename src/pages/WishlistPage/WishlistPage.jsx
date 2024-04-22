@@ -1,12 +1,16 @@
 import { useState } from "react";
 import ItemCard from "../../containers/ItemCard/ItemCard";
-import { tempWishlist } from "../../data/tempData";
 import styles from "./WishlistPage.module.scss";
+import { pullData } from "../../services/database";
+import { tempItems, tempImages, tempCart, tempWishlist } from "../../data/tempData";
 
 const WishlistPage = () => {
+  pullData("cart", tempCart);
+  pullData("wishlist", tempWishlist);
+
   const [presentItems, setPresentItems] = useState(tempWishlist.user1.items);
 
-  const handleNameClick = () => {
+  const handleNameClick = (itemID) => {
     console.log("Clicked on item ID:", itemID);
   };
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ItemCard.module.scss";
 import { tempItems } from "../../data/tempData";
 import CartBtn from "../../components/reusable/CartBtn/CartBtn";
 import WishlistBtn from "../../components/reusable/WishlistBtn/WishlistBtn";
+import Counter from "../../components/reusable/Counter/Counter";
 import { useLocation } from "react-router-dom";
 
 const ItemCard = ({ itemID, onClick, props, style, presentItems, setPresentItems }) => {
@@ -12,6 +13,8 @@ const ItemCard = ({ itemID, onClick, props, style, presentItems, setPresentItems
   const discounted = tempItems[itemID].price;
   const discount = tempItems[itemID].sale;
   const original = Math.round(((discounted * 100) / (100 - discount)) * 100) / 100;
+
+  const [qty, setQty] = useState(1);
 
   const handleRemove =
     useLocation().pathname === "/wishlist" || "/cart"
@@ -30,19 +33,19 @@ const ItemCard = ({ itemID, onClick, props, style, presentItems, setPresentItems
           className={styles.thumbnail}
         />
       )}
-      <div className={styles.info}>
-        {props.includes("name") && (
-          <h3 className={styles.name} onClick={handleNameClick}>
-            {tempItems[itemID].name}
-          </h3>
-        )}
 
+      {props.includes("name") && (
+        <h3 className={styles.name} onClick={handleNameClick}>
+          {tempItems[itemID].name}
+        </h3>
+      )}
+      <div className={styles.price}>
         {props.includes("original") && <p className={styles.original}>${original}</p>}
         {props.includes("sale") && <p className={styles.discount}>{discount}% off!</p>}
         {props.includes("price") && <p>${tempItems[itemID].price}</p>}
       </div>
 
-      
+      {props.includes("counter") && <Counter itemID={itemID} qty={qty} setQty={setQty} />}
 
       <div className={styles.btns}>
         {props.some((prop) => prop === "wishlist") && (

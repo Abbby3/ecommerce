@@ -1,9 +1,13 @@
+import { NavLink } from "react-router-dom";
 import ItemCard from "../../containers/ItemCard/ItemCard";
-import { tempCart } from "../../data/tempData";
+import { tempItems, tempImages, tempCart, tempWishlist } from "../../data/tempData";
 import styles from "./CartPage.module.scss";
 import { useState } from "react";
+import { pullData } from "../../services/database";
 
 const CartPage = () => {
+  pullData("cart", tempCart);
+
   const [presentItems, setPresentItems] = useState(tempCart.user1.items);
 
   const handleNameClick = (itemID) => {
@@ -26,6 +30,13 @@ const CartPage = () => {
           setPresentItems={setPresentItems}
         />
       ))}
+      {presentItems[0] && (
+        <div className={styles.below}>
+          <button className={styles.purchase}>
+            <NavLink to="/purchase">Purchase</NavLink>
+          </button>
+        </div>
+      )}
     </main>
   );
 };
