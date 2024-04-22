@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import styles from "./CartBtn.module.scss";
 import cartIcon from "../../assets/cartIcon.png";
+import binIcon from "../../assets/binIcon.png";
 import { tempCart } from "../../../data/tempData";
 import { pushData } from "../../../services/database";
 
-const CartBtn = ({ itemID, text }) => {
+const CartBtn = ({ itemID, bin, text }) => {
   const isItemCarted = tempCart.user1.items.includes(itemID);
   const [isCarted, setIsCarted] = useState(isItemCarted);
 
@@ -22,7 +22,7 @@ const CartBtn = ({ itemID, text }) => {
 
   return (
     <button className={styles.btn} onClick={handleClick}>
-      <img className={styles.btnimg} src={cartIcon} alt="cart" />
+      <img className={styles.btnimg} src={bin ? binIcon : cartIcon} alt="cart" />
       {text}
     </button>
   );

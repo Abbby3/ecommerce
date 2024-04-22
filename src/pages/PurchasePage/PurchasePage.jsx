@@ -1,14 +1,13 @@
 import styles from "./PurchasePage.module.scss";
-import purchaseIcon from "../../assets/purchaseIcon.png";
+import { NavLink } from "react-router-dom";
 
 const PurchasePage = () => {
   return (
     <div className={styles.purchase}>
-      <img className={styles.icon} src={purchaseIcon} alt="construction icon" />
-      <span className={styles.text}>
-        <h1>Under Construction</h1>
-        <p>Come back later!</p>
-      </span>
+      <h3>Purchase successful!</h3>
+      <NavLink className={styles.logo} to="/">
+        Back to Home
+      </NavLink>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const FeaturedSection = ({ featuredItems }) => {
   const [currentItemID, setCurrentItemID] = useState(featuredItems[0]);
 
   const handleClick = () => {
-    console.log("clicked on " + currentItemID);
+    console.log("clicked on", currentItemID);
   };
 
   return (

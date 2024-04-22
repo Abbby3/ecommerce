@@ -176,6 +176,9 @@ Cart page should have the following:
 - ### individual variant properties
   - stock, price, etc
 
+- ### smooth featured scrolling
+  - should fade new items in, fade previous items out.
+
 - ### contact page
   - form
   - type - review, complaint inquiry?

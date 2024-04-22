@@ -1,6 +1,59 @@
 @import "../../shared.scss";
 
-.card {
+.name {
+  font-size: 1.3em;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.sale {
+  width: 200px;
+  height: 250px;
+  background-color: white;
+  border: 5px solid $blu;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+.thumbnail {
+  width: 150px;
+  border-radius: 20px;
+}
+.btns {
+  display: flex;
+  position: absolute;
+  right: 25px;
+  top: 127px;
+}
+.original{
+  text-decoration: line-through;
+}
+
+.discount {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: $pnk;
+  border: 5px solid white;
+  border-radius: 40px;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+
+.recommended {
   width: 200px;
   height: 250px;
   background-color: white;
@@ -15,21 +68,13 @@
   &:hover {
     transform: scale(1.1);
   }
-}
-.thumbnail {
-  width: 150px;
-  border-radius: 20px;
-}
-.name {
-  font-size: 1.3em;
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
+  .thumbnail {
+    width: 150px;
+    border-radius: 20px;
   }
-}
-.btns {
-  display: flex;
-  position: absolute;
-  right: 25px;
-  top: 127px;
+  .btns {
+    position: absolute;
+    right: 25px;
+    top: 127px;
+  }
 }

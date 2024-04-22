@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import styles from "./WishlistBtn.module.scss";
 import wishlistIcon from "../../assets/wishlistIcon.png";
 import wishlistedIcon from "../../assets/wishlistedIcon.png";
+import binIcon from "../../assets/binIcon.png";
 import { tempWishlist } from "../../../data/tempData";
 import { pushData } from "../../../services/database";
 
-const WishlistBtn = ({ itemID, text }) => {
+const WishlistBtn = ({ itemID, bin, text }) => {
   const isItemWishlisted = tempWishlist.user1.items.includes(itemID);
   const [isWishlisted, setIsWishlisted] = useState(isItemWishlisted);
+  
 
   useEffect(() => {
     setIsWishlisted(tempWishlist.user1.items.includes(itemID));
   }, [itemID]);
 
   const handleClick = () => {
+    console.log('hi');
     setIsWishlisted(!isWishlisted);
 
     if (!isWishlisted) {
@@ -29,10 +31,10 @@ const WishlistBtn = ({ itemID, text }) => {
   };
 
   return (
-    <button className={styles.btn} onClick={handleClick}>
+    <button className={styles.btn} onClick={handleClick} tooltip>
       <img
         className={styles.btnimg}
-        src={isWishlisted ? wishlistedIcon : wishlistIcon}
+        src={(bin && binIcon) || (isWishlisted && wishlistedIcon) || wishlistIcon}
         alt="wishlist"
       />
       {text}
