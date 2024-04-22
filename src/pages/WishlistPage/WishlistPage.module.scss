@@ -1,13 +1,11 @@
 .list {
+  width: 100%;
   margin-top: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
-.card {
-  width: 1000px;
-  flex-direction: row;
-}
+
 
 

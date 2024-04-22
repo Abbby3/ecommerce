@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./CartBtn.module.scss";
 import cartIcon from "../../../assets/cartIcon.png";
+import cartedIcon from "../../../assets/cartedIcon.png";
+import binIcon from "../../../assets/binIcon.png";
 import { tempCart } from "../../../data/tempData";
 import { pushData } from "../../../services/database";
 
-const CartBtn = ({ itemID, text }) => {
+const CartBtn = ({ itemID, bin, text, onClick }) => {
   const isItemCarted = tempCart.user1.items.includes(itemID);
   const [isCarted, setIsCarted] = useState(isItemCarted);
 
@@ -13,16 +15,29 @@ const CartBtn = ({ itemID, text }) => {
   }, [itemID]);
 
   const handleClick = () => {
+    setIsCarted(!isCarted);
+
     if (!isCarted) {
       tempCart.user1.items.push(itemID);
-      setIsCarted(true);
-      pushData(tempCart, "cart");
+    } else {
+      const index = tempCart.user1.items.indexOf(itemID);
+      if (index !== -1) {
+        tempCart.user1.items.splice(index, 1);
+      }
     }
+
+    onClick && onClick();
+
+    pushData(tempCart, "cart");
   };
 
   return (
     <button className={styles.btn} onClick={handleClick}>
-      <img className={styles.btnimg} src={cartIcon} alt="cart" />
+      <img
+        className={styles.btnimg}
+        src={(bin && binIcon) || (isItemCarted && cartedIcon) || cartIcon}
+        alt="cart"
+      />
       {text}
     </button>
   );

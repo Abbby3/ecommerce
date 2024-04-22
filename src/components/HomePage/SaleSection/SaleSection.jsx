@@ -5,7 +5,7 @@ const SaleSection = ({ saleItems }) => {
   const handleItemClick = (itemID) => {
     console.log("clicked on", itemID);
   };
-  const props = ["thumbnail", "name", "price", "sale", "wishlist", "cart"];
+  const props = ["thumbnail", "name", "original", "sale", "price", "wishlist", "cart"];
 
   return (
     <section className={styles.section}>

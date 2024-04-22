@@ -1,5 +1,9 @@
 @import "../../../shared.scss";
 
+.section{
+  width: 100%;
+}
+
 .secTitle {
   margin-left: 150px;
 }
@@ -8,8 +12,8 @@
   background-color: rgba(256, 256, 256, 0.4);
   border-top: 5px solid white;
   border-bottom: 5px solid white;
-  width: 100vw;
-  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
