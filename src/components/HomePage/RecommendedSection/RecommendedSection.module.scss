@@ -1,4 +1,8 @@
-@import '../../../shared.scss';
+@import "../../../shared.scss";
+
+.title {
+  margin-left: 50px;
+}
 
 .cards {
   display: flex;
@@ -8,4 +12,10 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 150px;
+}
+
+.btns {
+  position: absolute;
+  right: 20px;
+  top: 134px;
 }

@@ -1,6 +1,6 @@
 @import "../../../shared.scss";
 
-.section{
+.section {
   width: 100%;
 }
 
@@ -20,4 +20,10 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+}
+
+.btns {
+  position: absolute;
+  right: 10%;
+  top: 50%;
 }

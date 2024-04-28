@@ -5,14 +5,15 @@
   align-items: center;
   gap: 5px;
 }
-.carBtn {
+.btn {
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
-.img {
+.btnImg {
   width: 30px;
 }
 .thumbnail{

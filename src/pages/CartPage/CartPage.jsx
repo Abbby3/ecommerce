@@ -1,38 +1,40 @@
-import { NavLink } from "react-router-dom";
-import ItemCard from "../../containers/ItemCard/ItemCard";
-import { tempItems, tempImages, tempCart, tempWishlist } from "../../data/tempData";
 import styles from "./CartPage.module.scss";
-import { useState } from "react";
-import { pullData } from "../../services/database";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { pullColl } from "../../services/database";
+import ItemCard from "../../containers/ItemCard/ItemCard";
+import ItemThumbnail from "../../components/ItemDetails/ItemThumbnail/ItemThumbnail";
+import ItemName from "../../components/ItemDetails/ItemName/ItemName";
+import ItemPrice from "../../components/ItemDetails/ItemPrice/ItemPrice";
+import BinBtn from "../../components/misc/BinBtn/BinBtn";
+
 
 const CartPage = () => {
-  pullData("cart", tempCart);
+  const [cartItems, setCartItems] = useState([]);
 
-  const [presentItems, setPresentItems] = useState(tempCart.user1.items);
 
-  const handleNameClick = (itemID) => {
-    console.log("Clicked on item ID:", itemID);
-  };
-  const props = ["thumbnail", "name", "original", "price", "counter", "cart", "bin"];
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      const cartData = await pullColl("users");
+      setCartItems(cartData["user1"].cart);
+    };
+    fetchCartItems();
+  }, []);
 
   return (
     <main className={styles.list}>
       <h1 className={styles.title}>Cart</h1>
-      {presentItems.map((itemID) => (
-        <ItemCard
-          className={styles.card}
-          key={itemID}
-          itemID={itemID}
-          onClick={handleNameClick}
-          props={props}
-          style={"cart"}
-          presentItems={presentItems}
-          setPresentItems={setPresentItems}
-        />
+      {cartItems.map((itemID) => (
+        <ItemCard className={styles.card} key={itemID} itemID={itemID} style={"long"}>
+          <ItemThumbnail itemID={itemID} style={"long"} />
+          <ItemName itemID={itemID} />
+          <ItemPrice itemID={itemID} />
+          <BinBtn itemID={itemID} page={"cart"} />
+        </ItemCard>
       ))}
-      {presentItems[0] && (
-        <div className={styles.below}>
-          <button className={styles.purchase}>
+      {cartItems.length > 0 && (
+        <div className={styles.purchase}>
+          <button className={styles.btn}>
             <NavLink to="/purchase">Purchase</NavLink>
           </button>
         </div>

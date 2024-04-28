@@ -1,35 +1,38 @@
-import { useState } from "react";
-import ItemCard from "../../containers/ItemCard/ItemCard";
 import styles from "./WishlistPage.module.scss";
-import { pullData } from "../../services/database";
-import { tempItems, tempImages, tempCart, tempWishlist } from "../../data/tempData";
+import { useState, useEffect } from "react";
+import { pullColl } from "../../services/database";
+import ItemCard from "../../containers/ItemCard/ItemCard";
+import ItemThumbnail from "../../components/ItemDetails/ItemThumbnail/ItemThumbnail";
+import ItemName from "../../components/ItemDetails/ItemName/ItemName";
+import ItemPrice from "../../components/ItemDetails/ItemPrice/ItemPrice";
+import CartBtn from "../../components/misc/CartBtn/CartBtn";
+import BinBtn from "../../components/misc/BinBtn/BinBtn";
 
 const WishlistPage = () => {
-  pullData("cart", tempCart);
-  pullData("wishlist", tempWishlist);
+  const [wishlistItems, setWishlistItems] = useState([]);
 
-  const [presentItems, setPresentItems] = useState(tempWishlist.user1.items);
+  useEffect(() => {
+    const fetchWishlistItems = async () => {
+      const wishlistData = await pullColl("users");
+      setWishlistItems(wishlistData["user1"].wishlist);
+    };
+    fetchWishlistItems();
+  }, []);
 
-  const handleNameClick = (itemID) => {
-    console.log("Clicked on item ID:", itemID);
-  };
-
-  const props = ["thumbnail", "name", "price", "wishlist", "bin", "cart"];
 
   return (
     <main className={styles.list}>
       <h1 className={styles.title}>Wishlist</h1>
-      {presentItems.map((itemID) => (
-        <ItemCard
-          className={styles.card}
-          key={itemID}
-          itemID={itemID}
-          onClick={handleNameClick}
-          props={props}
-          style={"wishlist"}
-          presentItems={presentItems}
-          setPresentItems={setPresentItems}
-        />
+      {wishlistItems.map((itemID) => (
+        <ItemCard className={styles.card} key={itemID} itemID={itemID} style={"long"}>
+          <ItemThumbnail itemID={itemID} style={"long"} />
+          <ItemName itemID={itemID} />
+          <ItemPrice itemID={itemID} />
+          <div className={styles.btns}>
+            <CartBtn itemID={itemID} />
+            <BinBtn itemID={itemID} page={"wishlist"} />
+          </div>
+        </ItemCard>
       ))}
     </main>
   );

@@ -1,44 +1,27 @@
 import "./App.scss";
-import { pullData, pushData } from "./services/database";
-import { tempItems, tempImages, tempWishlist, tempCart } from "./data/tempData";
+// import { pullData, pushData } from "./devTools/devService";
+// import { items, users } from "./devTools/devData"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Loading from "./components/reusable/Loading/Loading";
-import Foot from "./components/reusable/Foot/Foot";
-import Navbar from "./components/reusable/Navbar/Navbar";
+import Foot from "./components/misc/Foot/Foot";
+import Navbar from "./components/misc/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import CartPage from "./pages/CartPage/CartPage";
 import PurchasePage from "./pages/PurchasePage/PurchasePage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import { DataProvider } from "./context/DataContext";
+// import { pushData } from "./devTools/devService";
+// import { users, items } from "./devTools/devData";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await pullData("items", tempItems);
-        await pullData("images", tempImages);
-        await pullData("cart", tempCart);
-        await pullData("wishlist", tempWishlist);
-      } catch (error) {
-        setErrors(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  // pushData(users, "users");
+  // pushData(items, "items");
 
   return (
-    <div className="ecommerce">
-      <BrowserRouter>
-        <Navbar />
-        {loading ? (
-          <Loading />
-        ) : (
+    <DataProvider>
+      <div className="ecommerce">
+        <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
@@ -46,10 +29,10 @@ function App() {
             <Route path="/purchase" element={<PurchasePage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
-        )}
-        <Foot />
-      </BrowserRouter>
-    </div>
+          <Foot />
+        </BrowserRouter>
+      </div>
+    </DataProvider>
   );
 }
 

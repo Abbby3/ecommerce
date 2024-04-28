@@ -1,16 +1,26 @@
-import { tempItems } from "../data/tempData";
+import { db } from "../config/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
-export const randomItems = (num, term) => {
-  const itemIds = term
-    ? Object.keys(tempItems).filter((itemId) => tempItems[itemId][term] > 0)
-    : Object.keys(tempItems);
+export const randomItems = async (num, term) => {
+  const itemCollectionRef = collection(db, "items");
+  const items = [];
+  try {
+    const snapshot = await getDocs(itemCollectionRef);
 
-  for (let i = itemIds.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [itemIds[i], itemIds[j]] = [itemIds[j], itemIds[i]];
+    snapshot.forEach((doc) => {
+      if (term !== undefined) {
+        if (doc.data()[term]) {
+          items.push(doc.id);
+        }
+      } else {
+        items.push(doc.id);
+      }
+    });
+    items.sort(() => Math.random() - 0.5);
+
+    return items.slice(0, num);
+  } catch (e) {
+    console.error(e);
+    return [];
   }
-
-  const selectedItemIDs = itemIds.slice(0, num);
-
-  return selectedItemIDs;
 };

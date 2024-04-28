@@ -1,43 +1,33 @@
 import { db } from "../config/firebase";
-import { collection, getDocs, setDoc, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, updateDoc, doc } from "firebase/firestore";
 
-export const pullData = async (collectionName, data) => {
-  try {
-    const collectionRef = collection(db, collectionName);
-    const snapshot = await getDocs(collectionRef);
-
-    Object.keys(data).forEach((key) => delete data[key]);
-    snapshot.forEach((doc) => {
-      data[doc.id] = doc.data();
-    });
-
-    console.log(`successfully pulled data from ${collectionName}`);
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+export const pullColl = async (coll) => {
+  const collectionRef = collection(db, coll);
+  const snapshot = await getDocs(collectionRef);
+  const result = {};
+  snapshot.forEach((doc) => {
+    result[doc.id] = doc.data();
+  });
+  return result;
 };
 
-export const pushData = async (data, collectionName) => {
-  try {
-    const collectionRef = collection(db, collectionName);
-    const snapshot = await getDocs(collectionRef);
+export const checkItem = async (itemID, page) => {
+  const docRef = doc(db, "users", "user1");
+  const snapshot = await getDoc(docRef);
+  const pageArr = snapshot.data()[page];
+  return pageArr.includes(itemID) ? true : false;
+};
 
-    snapshot.forEach(async (doc) => {
-      const docId = doc.id;
-      if (!data.hasOwnProperty(docId)) {
-        await deleteDoc(doc.ref);
-      }
-    });
+export const pushItem = async (itemID, page) => {
+  const docRef = doc(db, "users", "user1");
+  const snapshot = await getDoc(docRef);
+  const pageArr = snapshot.data()[page];
 
-    for (const itemId in data) {
-      const docRef = doc(collectionRef, itemId);
-      await setDoc(docRef, data[itemId], { merge: false });
-    }
+  const newArr = pageArr.includes(itemID)
+    ? pageArr.filter((id) => id !== itemID)
+    : [...pageArr, itemID];
 
-    console.log(`successfully pushed data to ${collectionName}`);
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  await updateDoc(doc(db, "users", "user1"), {
+    [page]: newArr,
+  });
 };
