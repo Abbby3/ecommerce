@@ -2,7 +2,7 @@ import styles from "./Carousel.module.scss";
 import left from "../../../assets/left.png";
 import right from "../../../assets/right.png";
 
-const Carousel = ({ url, onCrement }) => {
+const Carousel = ({ url, onCrement, size }) => {
   const handleCrement = (e, v) => {
     onCrement(v);
     e.stopPropagation();
@@ -14,7 +14,7 @@ const Carousel = ({ url, onCrement }) => {
         <img className={styles.btnImg} src={left} alt="previous" />
       </button>
 
-      <img src={url} className={styles.thumbnail} />
+      <img src={url} className={styles[size]} />
 
       <button className={styles.btn} onClick={(e) => handleCrement(e, "+")}>
         <img className={styles.btnImg} src={right} alt="next" />

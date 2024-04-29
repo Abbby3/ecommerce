@@ -3,8 +3,16 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+  border-radius: 20px;
 }
+.smol {
+  width: 200px;
+}
+.big{
+  width: 400px;
+}
+
 .btn {
   width: 40px;
   height: 40px;

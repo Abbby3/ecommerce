@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./CartBtn.module.scss";
 import cartIcon from "../../../assets/cartIcon.png";
 import cartedIcon from "../../../assets/cartedIcon.png";
@@ -7,12 +7,14 @@ import { checkItem, pushItem } from "../../../services/database";
 const CartBtn = ({ itemID }) => {
   const [isCarted, setIsCarted] = useState(false);
 
-  const fetchCartedStatus = async () => {
-    await checkItem(itemID, "cart").then((res) => {
-      setIsCarted(res);
-    });
-  };
-  fetchCartedStatus();
+  useEffect(() => {
+    const fetchCartedStatus = async () => {
+      await checkItem(itemID, "cart").then((res) => {
+        setIsCarted(res);
+      });
+    };
+    fetchCartedStatus();
+  }, []);
 
   const handleClick = (e) => {
     setIsCarted(!isCarted);

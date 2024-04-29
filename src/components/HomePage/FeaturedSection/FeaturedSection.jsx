@@ -13,13 +13,7 @@ const FeaturedSection = ({ featuredItems }) => {
   const [index, setIndex] = useState(0);
 
   const handleCrement = (v) => {
-    setIndex((prev) => {
-      const i =
-        v === "+"
-          ? (prev + 1) % featuredItems.length
-          : (prev - 1 + featuredItems.length) % featuredItems.length;
-      return i;
-    });
+    setIndex((prev) => (prev + (v === '+' ? 1 : -1) + featuredItems.length) % featuredItems.length);
   };
 
   const currentItem = featuredItems[index];
@@ -37,7 +31,7 @@ const FeaturedSection = ({ featuredItems }) => {
       <h2>Featured</h2>
 
       <ItemCard itemID={currentItem} style={"big"}>
-        <Carousel url={thumbnail} onCrement={handleCrement} />
+        <Carousel url={thumbnail} onCrement={handleCrement} size={'smol'}/>
 
         <div className={styles.info}>
           <ItemName itemID={currentItem} />

@@ -7,6 +7,8 @@
   margin: 0;
   padding: 0;
   & button {
+    min-width: 30px;
+    height: 30px;
     background-color: white;
     border: 2px solid white;
     border-radius: 5px;
@@ -17,6 +19,10 @@
     }
     &:active {
       border: 2px solid black;
+    }
+    & img {
+      width: 30px;
+      height: 30px;
     }
   }
 }

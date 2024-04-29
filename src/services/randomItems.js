@@ -8,13 +8,14 @@ export const randomItems = async (num, term) => {
     const snapshot = await getDocs(itemCollectionRef);
 
     snapshot.forEach((doc) => {
+      if (doc.data().stock !== 0) {
       if (term !== undefined) {
         if (doc.data()[term]) {
           items.push(doc.id);
         }
       } else {
         items.push(doc.id);
-      }
+      }}
     });
     items.sort(() => Math.random() - 0.5);
 
