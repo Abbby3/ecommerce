@@ -7,18 +7,19 @@ import ItemName from "../../components/ItemDetails/ItemName/ItemName";
 import ItemPrice from "../../components/ItemDetails/ItemPrice/ItemPrice";
 import CartBtn from "../../components/misc/CartBtn/CartBtn";
 import BinBtn from "../../components/misc/BinBtn/BinBtn";
+import { useLazyContext } from "../../context/LazyContext";
 
 const WishlistPage = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
+  const { isLazy, lazy } = useLazyContext();
 
   useEffect(() => {
-    const fetchWishlistItems = async () => {
+    const pullWishlistItems = async () => {
       const wishlistData = await pullColl("users");
       setWishlistItems(wishlistData["user1"].wishlist);
     };
-    fetchWishlistItems();
-  }, []);
-
+    pullWishlistItems();
+  }, [isLazy]);
 
   return (
     <main className={styles.list}>

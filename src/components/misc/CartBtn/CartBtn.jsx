@@ -3,9 +3,11 @@ import styles from "./CartBtn.module.scss";
 import cartIcon from "../../../assets/cartIcon.png";
 import cartedIcon from "../../../assets/cartedIcon.png";
 import { checkItem, pushItem } from "../../../services/database";
+import { useLazyContext } from "../../../context/LazyContext";
 
 const CartBtn = ({ itemID }) => {
   const [isCarted, setIsCarted] = useState(false);
+  const { isLazy, lazy } = useLazyContext();
 
   useEffect(() => {
     const fetchCartedStatus = async () => {
@@ -14,12 +16,14 @@ const CartBtn = ({ itemID }) => {
       });
     };
     fetchCartedStatus();
-  }, []);
+  }, [isLazy]);
 
   const handleClick = (e) => {
-    setIsCarted(!isCarted);
-    pushItem(itemID, "cart");
     e.stopPropagation();
+    setIsCarted(!isCarted);
+    pushItem(itemID, "cart").then(() => {
+      lazy();
+    });
   };
 
   return (

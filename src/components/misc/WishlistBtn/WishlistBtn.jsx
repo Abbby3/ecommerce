@@ -3,9 +3,11 @@ import styles from "./WishlistBtn.module.scss";
 import wishlistIcon from "../../../assets/wishlistIcon.png";
 import wishlistedIcon from "../../../assets/wishlistedIcon.png";
 import { checkItem, pushItem } from "../../../services/database";
+import { useLazyContext } from "../../../context/LazyContext";
 
 const WishlistBtn = ({ itemID }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { isLazy, lazy } = useLazyContext();
 
   useEffect(() => {
     const fetchWishlistedStatus = async () => {
@@ -14,12 +16,14 @@ const WishlistBtn = ({ itemID }) => {
       });
     };
     fetchWishlistedStatus();
-  }, []);
+  }, [isLazy]);
 
   const handleClick = (e) => {
-    setIsWishlisted(!isWishlisted);
-    pushItem(itemID, "wishlist");
     e.stopPropagation();
+    setIsWishlisted(!isWishlisted);
+    pushItem(itemID, "wishlist").then(() => {
+      lazy();
+    });
   };
 
   return (

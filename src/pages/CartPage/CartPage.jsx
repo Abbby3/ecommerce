@@ -7,19 +7,19 @@ import ItemThumbnail from "../../components/ItemDetails/ItemThumbnail/ItemThumbn
 import ItemName from "../../components/ItemDetails/ItemName/ItemName";
 import ItemPrice from "../../components/ItemDetails/ItemPrice/ItemPrice";
 import BinBtn from "../../components/misc/BinBtn/BinBtn";
-
+import { useLazyContext } from "../../context/LazyContext";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
-
+  const { isLazy, lazy } = useLazyContext();
 
   useEffect(() => {
-    const fetchCartItems = async () => {
+    const pullCartItems = async () => {
       const cartData = await pullColl("users");
       setCartItems(cartData["user1"].cart);
     };
-    fetchCartItems();
-  }, []);
+    pullCartItems();
+  }, [isLazy]);
 
   return (
     <main className={styles.list}>

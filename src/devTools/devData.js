@@ -1,0 +1,416 @@
+// // for adding items to firestore
+
+// export const items = {
+//   "cl1-sh1-po1": {
+//     id: "cl1-sh1-po1",
+//     category: "clothes",
+//     type: "shirts",
+//     name: "Polo Shirt",
+//     price: 19.99,
+//     sale: 0,
+//     stock: 50,
+//     thumbnail: "https://i.imgur.com/H77cCAE.jpg",
+//     colour: ["red", "blue"],
+//     size: ["S", "M", "L"],
+//     images: {
+//       red: ["https://i.imgur.com/yhzCrEc.jpg", "https://i.imgur.com/pONDuLj.jpg"],
+//       blue: ["https://i.imgur.com/gdivs9v.jpg", "https://i.imgur.com/oUYLSsT.jpg"],
+//     },
+//   },
+
+//   "cl1-sh1-vn1": {
+//     id: "cl1-sh1-vn1",
+//     category: "clothes",
+//     type: "shirts",
+//     name: "V-Neck Shirt",
+//     price: 24.99,
+//     sale: 10,
+//     stock: 40,
+//     thumbnail: "https://i.imgur.com/78EAHfe.jpg",
+//     colour: ["black", "white", "grey"],
+//     size: ["M", "L", "XL"],
+//     images: {
+//       black: ["https://i.imgur.com/JJ1XBH0.jpg", "https://i.imgur.com/ZYIatIq.jpg"],
+//       white: ["https://i.imgur.com/SwxcBQ2.jpg", "https://i.imgur.com/p1c3joZ.jpg"],
+//       grey: ["https://i.imgur.com/7yMjCS2.jpg", "https://i.imgur.com/HtAzhxB.jpg"],
+//     },
+//   },
+
+//   "cl1-pa1-cp1": {
+//     id: "cl1-pa1-cp1",
+//     category: "clothes",
+//     type: "pants",
+//     name: "Cargo Pants",
+//     price: 39.99,
+//     sale: 0,
+//     stock: 20,
+//     thumbnail: "https://i.imgur.com/VVz070P.jpg",
+//     colour: ["black", "olive"],
+//     size: ["S", "M", "L", "XL"],
+//     images: {
+//       black: ["https://i.imgur.com/0YcvtGd.jpg", "https://i.imgur.com/0XN2nNT.jpg"],
+//       olive: ["https://i.imgur.com/MG9lOSJ.jpg", "https://i.imgur.com/PsjaKjO.jpg"],
+//     },
+//   },
+
+//   "te1-ph1-i12": {
+//     id: "te1-ph1-i12",
+//     category: "tech",
+//     type: "phones",
+//     name: "iPhone 12",
+//     price: 899.99,
+//     sale: 0,
+//     stock: 10,
+//     thumbnail: "https://i.imgur.com/QMQKLNC.jpg",
+//     colour: ["white", "black", "blue"],
+//     storage: ["64GB", "128GB", "256GB"],
+//     images: {
+//       white: ["https://i.imgur.com/i2ZHrWK.jpg", "https://i.imgur.com/JpXTZd9.jpg"],
+//       black: ["https://i.imgur.com/6jgNxeD.jpg", "https://i.imgur.com/cnal1mK.jpg"],
+//       blue: ["https://i.imgur.com/vWN9exZ.jpg", "https://i.imgur.com/zyqMUzi.jpg"],
+//     },
+//   },
+
+//   "cl1-pa1-je1": {
+//     id: "cl1-pa1-je1",
+//     category: "clothes",
+//     type: "pants",
+//     name: "Jeans",
+//     price: 49.99,
+//     sale: 0,
+//     stock: 25,
+//     thumbnail: "https://i.imgur.com/8TfbZVn.jpg",
+//     colour: ["blue", "black"],
+//     size: ["S", "M", "L", "XL"],
+//     images: {
+//       blue: ["https://i.imgur.com/VRbyCuE.jpg", "https://i.imgur.com/aT9z6Ux.jpg"],
+//       black: ["https://i.imgur.com/d7TBkfO.jpg", "https://i.imgur.com/qMePviR.jpg"],
+//     },
+//   },
+
+//   "te1-ph1-gp4": {
+//     id: "te1-ph1-g04",
+//     category: "tech",
+//     type: "phones",
+//     name: "Google Pixel 4",
+//     price: 699.99,
+//     sale: 0,
+//     stock: 20,
+//     thumbnail: "https://i.imgur.com/4I80FAt.jpg",
+//     colour: ["black", "white"],
+//     storage: ["64GB", "128GB"],
+//     images: {
+//       black: ["https://i.imgur.com/lF2IRlk.jpg", "https://i.imgur.com/nwFljdF.jpg"],
+//       white: ["https://i.imgur.com/2K54ZYi.jpg", "https://i.imgur.com/dlFYVaF.jpg"],
+//     },
+//   },
+
+//   "te1-ac1-pa1": {
+//     id: "te1-ac1-pa1",
+//     category: "tech",
+//     type: "accessories",
+//     name: "Wireless Earbuds",
+//     price: 79.99,
+//     sale: 0,
+//     stock: 50,
+//     thumbnail: "https://i.imgur.com/JAdGIXp.jpg",
+//     colour: ["black", "white"],
+//     images: {
+//       black: ["https://i.imgur.com/lPyQ9qG.jpg", "https://i.imgur.com/RI3cJyF.jpg"],
+//       white: ["https://i.imgur.com/pSVX5ge.jpg", "https://i.imgur.com/iZeF6U2.jpg"],
+//     },
+//   },
+
+//   "te1-ac1-po1": {
+//     id: "te1-ac1-po1",
+//     category: "tech",
+//     type: "accessories",
+//     name: "Portable Power Bank",
+//     price: 39.99,
+//     sale: 0,
+//     stock: 50,
+//     thumbnail: "https://i.imgur.com/ymVVlk7.jpg",
+//     images: {
+//       default: ["https://i.imgur.com/5kHwDs4.jpg", "https://i.imgur.com/XXM7QbU.jpg"],
+//     },
+//   },
+
+//   "to1-ac1-su1": {
+//     id: "to1-ac1-su1",
+//     category: "toys",
+//     type: "action-figures",
+//     name: "Superhero Action Figures Set",
+//     price: 49.99,
+//     sale: 0,
+//     stock: 15,
+//     thumbnail: "https://i.imgur.com/TA0ImQL.jpg",
+//     colour: ["black", "green"],
+//     images: {
+//       black: ["https://i.imgur.com/NYmMbRp.jpg", "https://i.imgur.com/P6Xa2x8.jpg"],
+//       green: ["https://i.imgur.com/gmUCyHc.jpg", "https://i.imgur.com/m8eh75p.jpg"],
+//     },
+//   },
+
+//   "pe1-fo1-pf1": {
+//     id: "pe1-fo1-pf1",
+//     category: "pets",
+//     type: "food",
+//     name: "Premium Dog Food",
+//     price: 39.99,
+//     sale: 10,
+//     stock: 30,
+//     thumbnail: "https://i.imgur.com/1KNoaSo.jpg",
+//     flavour: ["chicken", "beef", "salmon"],
+//     images: {
+//       default: ["https://i.imgur.com/9yYu5SR.jpg", "https://i.imgur.com/plXl9Jl.jpg"],
+//     },
+//   },
+
+//   "fu1-ta1-co1": {
+//     id: "fu1-ta1-co1",
+//     category: "furniture",
+//     type: "tables",
+//     name: "Modern Coffee Table",
+//     price: 199.99,
+//     sale: 0,
+//     stock: 10,
+//     thumbnail: "https://i.imgur.com/bFewHY9.jpg",
+//     colour: ["black", "white"],
+//     images: {
+//       black: ["https://i.imgur.com/ZcJ1cAQ.jpg", "https://i.imgur.com/TI8pt75.jpg"],
+//       white: ["https://i.imgur.com/HvXk5kT.jpg", "https://i.imgur.com/abo1sz8.jpg"],
+//     },
+//   },
+
+//   "cl2-eq1-fm1": {
+//     id: "cl2-eq1-sw1",
+//     category: "cleaning",
+//     type: "equipment",
+//     name: "Floor Mop",
+//     price: 39.99,
+//     sale: 15,
+//     stock: 25,
+//     thumbnail: "https://i.imgur.com/7uEzMVG.jpg",
+//     images: {
+//       default: ["https://i.imgur.com/kUCj2SY.jpg", "https://i.imgur.com/q9gz8Td.jpg"],
+//     },
+//   },
+
+//   "cl2-eq1-va1": {
+//     id: "cl2-eq1-va1",
+//     category: "cleaning",
+//     type: "equipment",
+//     name: "Vacuum Cleaner",
+//     price: 139.99,
+//     sale: 15,
+//     stock: 5,
+//     thumbnail: "https://i.imgur.com/1ZDu4kH.jpg",
+//     power: ["Corded", "Battery"],
+//     images: {
+//       default: ["https://i.imgur.com/sVCRFZM.jpg", "https://i.imgur.com/BWBBZj9.jpg"],
+//     },
+//   },
+
+//   "cl2-pr1-sp1": {
+//     id: "cl2-pr1-sp1",
+//     category: "cleaning",
+//     type: "products",
+//     name: "Spray Bottle",
+//     price: 7.99,
+//     sale: 0,
+//     stock: 52,
+//     thumbnail: "https://i.imgur.com/K73UiVz.jpg",
+//     surface: ["Floor", "Kitchen"],
+//     images: {
+//       default: ["https://i.imgur.com/n6Ptf70.jpg", "https://i.imgur.com/LiWVT5s.jpg"],
+//     },
+//   },
+
+//   "to1-pl1-bl1": {
+//     id: "to1-pl1-bl1",
+//     category: "toys",
+//     type: "playsets",
+//     name: "Dollhouse Playset",
+//     price: 69.99,
+//     sale: 0,
+//     stock: 20,
+//     thumbnail: "https://i.imgur.com/Xh8CaPx.jpg",
+//     colour: ["pink", "blue"],
+//     images: {
+//       pink: ["https://i.imgur.com/rvezoor.jpg", "https://i.imgur.com/rxYdY2b.jpg"],
+//       blue: ["https://i.imgur.com/dkt2FsU.jpg", "https://i.imgur.com/6bEmtf9.jpg"],
+//     },
+//   },
+
+//   "pe1-cl1-cw1": {
+//     id: "pe1-cl1-cw1",
+//     category: "pets",
+//     type: "clothing",
+//     name: "Cozy Dog Sweater",
+//     price: 24.99,
+//     sale: 0,
+//     stock: 30,
+//     thumbnail: "https://i.imgur.com/fqp8mm0.jpg",
+//     colour: ["red", "grey"],
+//     size: ["S", "M", "L"],
+//     images: {
+//       red: ["https://i.imgur.com/fD9TIcS.jpg", "https://i.imgur.com/wG3Jp0e.jpg"],
+//       grey: ["https://i.imgur.com/KmObul3.jpg", "https://i.imgur.com/6sZINuj.jpg"],
+//     },
+//   },
+
+//   "fu1-so1-se1": {
+//     id: "fu1-so1-se1",
+//     category: "furniture",
+//     type: "sofas",
+//     name: "Sectional Sofa",
+//     price: 799.99,
+//     sale: 0,
+//     stock: 5,
+//     thumbnail: "https://i.imgur.com/ULwUPix.jpg",
+//     colour: ["charcoal", "beige"],
+//     images: {
+//       charcoal: ["https://i.imgur.com/HNqZVQi.jpg", "https://i.imgur.com/ImAL1YL.jpg"],
+//       beige: ["https://i.imgur.com/EMBYJxm.jpg", "https://i.imgur.com/FpC3msi.jpg"],
+//     },
+//   },
+
+//   "to1-rc1-ca1": {
+//     id: "to1-rc1-ca1",
+//     category: "toys",
+//     type: "remote-control",
+//     name: "Remote Control Car",
+//     price: 49.99,
+//     sale: 0,
+//     stock: 15,
+//     thumbnail: "https://i.imgur.com/Jpt9kbE.jpg",
+//     colour: ["red", "blue"],
+//     images: {
+//       red: ["https://i.imgur.com/tr9GB6G.jpg", "https://i.imgur.com/jqkoajF.jpg"],
+//       blue: ["https://i.imgur.com/SYX54fR.jpg", "https://i.imgur.com/Shn83Bw.jpg"],
+//     },
+//   },
+
+//   "to1-pl1-wo1": {
+//     id: "to1-pl1-wo1",
+//     category: "toys",
+//     type: "playsets",
+//     name: "Wooden Train Set",
+//     price: 39.99,
+//     sale: 0,
+//     stock: 20,
+//     thumbnail: "https://i.imgur.com/CAqQMWN.jpg",
+//     images: {
+//       default: ["https://i.imgur.com/Z9CjQNo.jpg", "https://i.imgur.com/UeVX3ty.jpg"],
+//     },
+//   },
+
+//   "to1-ac1-di1": {
+//     id: "to1-ac1-di1",
+//     category: "toys",
+//     type: "action-figures",
+//     name: "Dinosaur Action Figures Set",
+//     price: 29.99,
+//     sale: 15,
+//     stock: 25,
+//     thumbnail: "https://i.imgur.com/VlSASOe.jpg",
+//     colour: ["green", "brown"],
+//     images: {
+//       green: ["https://i.imgur.com/RiN1aVk.jpg", "https://i.imgur.com/R2f3cHd.jpg"],
+//       brown: ["https://i.imgur.com/cjfkmGG.jpg", "https://i.imgur.com/SUrZig0.jpg"],
+//     },
+//   },
+
+//   "pe1-to1-ba1": {
+//     id: "pe1-to1-ba1",
+//     category: "pets",
+//     type: "toys",
+//     name: "Dog Toy Ball",
+//     price: 12.99,
+//     sale: 0,
+//     stock: 40,
+//     thumbnail: "https://i.imgur.com/vFs3ndC.jpg",
+//     colour: ["blue", "orange"],
+//     images: {
+//       blue: ["https://i.imgur.com/HZesbNH.jpg", "https://i.imgur.com/EC5OQpR.jpg"],
+//       orange: ["https://i.imgur.com/jKZJwuP.jpg", "https://i.imgur.com/N0qirJJ.jpg"],
+//     },
+//   },
+
+//   "pe1-cl1-bd1": {
+//     id: "pe1-cl1-bd1",
+//     category: "pets",
+//     type: "clothing",
+//     name: "Dog Bandana",
+//     price: 9.99,
+//     sale: 0,
+//     stock: 50,
+//     thumbnail: "https://i.imgur.com/VH1RKcv.jpg",
+//     colour: ["plaid", "striped"],
+//     size: ["S", "M", "L"],
+//     images: {
+//       plaid: ["https://i.imgur.com/lVgji8y.jpg", "https://i.imgur.com/Ia8IRP3.jpg"],
+//       striped: ["https://i.imgur.com/j2dVeAK.jpg", "https://i.imgur.com/FoieO4V.jpg"],
+//     },
+//   },
+
+//   "pe1-cl1-pj1": {
+//     id: "pe1-ac1-dc1",
+//     category: "pets",
+//     type: "clothing",
+//     name: "Cat pyjamas",
+//     price: 29.99,
+//     sale: 0,
+//     stock: 25,
+//     thumbnail: "https://i.imgur.com/rbxgyFP.jpg",
+//     colour: ["red", "black"],
+//     size: ["S", "M", "L"],
+//     images: {
+//       red: ["https://i.imgur.com/lEWpaGq.jpg", "https://i.imgur.com/p1c5BuL.jpg"],
+//       black: ["https://i.imgur.com/HDHy7SK.jpg", "https://i.imgur.com/cEjEBCk.jpg"],
+//     },
+//   },
+
+//   "te1-ca1-pc1": {
+//     id: "te1-ca1-pc1",
+//     category: "tech",
+//     type: "cases",
+//     name: "Phone Case",
+//     price: 19.99,
+//     sale: 0,
+//     stock: 50,
+//     thumbnail: "https://i.imgur.com/uOD0a2E.jpg",
+//     colour: ["black", "blue", "red"],
+//     models: ["iPhone 12", "Samsung Galaxy S21"],
+//     images: {
+//       black: ["https://i.imgur.com/IJUzUTF.jpg", "https://i.imgur.com/ekhb4Y5.jpg"],
+//       blue: ["https://i.imgur.com/81cEC49.jpg", "https://i.imgur.com/CKJSLiU.jpg"],
+//       red: ["https://i.imgur.com/wSLaWcn.jpg", "https://i.imgur.com/9jOkFRw.jpg"],
+//     },
+//   },
+
+//   "te1-ta1-ip1": {
+//     id: "te1-ta1-ip1",
+//     category: "tech",
+//     type: "tablets",
+//     name: "iPad",
+//     price: 599.99,
+//     sale: 0,
+//     stock: 10,
+//     thumbnail: "https://i.imgur.com/PFF08J8.jpg",
+//     colour: ["black", "bronze"],
+//     storage: ["128GB", "256GB"],
+//     images: {
+//       black: ["https://i.imgur.com/cE2TohP.jpg", "https://i.imgur.com/apqrYIh.jpg"],
+//       bronze: ["https://i.imgur.com/bOzGN8f.jpg", "https://i.imgur.com/bDkCnqU.jpg"],
+//     },
+//   },
+// };
+
+// export const users = {
+//   user1: {
+//     id: "user1",
+//     cart: ["cl1-sh1-po1", "te1-ph1-i12"],
+//     wishlist: ["cl1-sh1-po1", "te1-ph1-i12"],
+//   },
+// };

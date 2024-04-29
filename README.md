@@ -1,92 +1,73 @@
 # eCommerce website
-This website is a react based web application that mocks an online shopping platform.
-  
 
-### future updates should include
-- ### modal
-  - should appear when clicking item name
-  - prefunctionality is already in place
+This web application is a mock e-commerce website, built in react, using a firestore database to store information.
 
-- ### navbar features
-  - navbar appears on scroll up
-    - change 'mode' (display fixed/absolute) on scroll up/down 
-      - looks for down on fixed, looks for up on absolute 
-    - turn to fixed on middle click?
-  - drop down for extra features
-    - could also include list for searching specific category or types
+## tools used
 
-- ### user system
-  - link/icon in navbar
-  - login/sign up page
-    - hashing
-    - sign up should add to firestore 
-      - enables options like recommended, wishlist
-        - saved across account
-  - should default to logged out
-  - login in shouldn't clear cart (i hate when it does)
+- React for frontend
+- React router dom for navigation
+- SASS for styling
+- Firestore for data storage
+- DreamStudio for image generation
+- Imgur for image hosting
 
-- ### currency conversion
-  - displayed on navbar
-  - saved on user account
+## features
 
-- ### individual variant properties
-  - stock, price, etc
-  - should be able to purchases an item, and only have that specific variant stock change
+On startup, users are presented with items as cards in various sections. Users are able to click on buttons to add the item to the cart/wishlist, or the card to bring up a modal with more information on the product. Users can also navigate to the cart or wishlist pages, which each show a list of items in each set that can also be interacted with.
 
-- ### smooth featured scrolling
-  - should fade new items in, fade previous items out.
+Other features include:
 
-- ### contact page
-  - form
-  - type - review, complaint, inquiry, etc
+- navbar hides on scroll down, shows on scroll up
+- error page that accounts for incorrect urls
+- basic purchase page that presents the foundation of a purchasing system
+- developer tools that allow developers to add or remove data from the database with ease
+- carousel of images that can be interacted with to show other images
+- a boolean context, that is changed when an update to the database occurs, prompting other components to rerender globally without chaining states
 
-- ### search page
-  - filters by category/type/variant
-  - search bar separate to filters
-    - should look for matches in all name, category, type, variants
-  - part of navbar
+Data is stored in two separate collections. The 'items' collection represents the static data that won't be changed by the user at any point. This is stored as a context for components to call on to avoid making multiple api calls. Within this collection, the items are stored as documents that contain the item information, and sorted by the item's ID.
 
-- ### payment with stripe integration
-  - payment screen from cart page
-  - interact with stock in firestore
-  - purchase history page
-  - number sold on item
-  - changes to this page should pull api to ensure correct data
+The id is based on 9 character string in three parts, sorted by category-type-item. For example, cl1-pa1-je1 is the id for clothes>pants>jeans.
 
-- ### recommended 'algorithm'
-  - algorith shows random items
-    - number of items in wishlist/cart/purchased increases the chance of the associated category and variants appearing
-      - maximum increase in chance increases with more items, size variant max chance goes up faster
-  - recommended section to replace main section
-  - 'something new' section for opposites of recommended?
+The other collection, 'users', represents the dynamic data, that can be changed by the user. Inside, are the user documents, that store the items in the wishlist and cart for each user.
 
-- ### related items
-  - based on type+variants, then category
+## future features
 
-- ### reviews
-  - default reviews stored on firestore
-    - number of pregenerated reviews inversely proportional to stock levels/number sold? only initial no., doesnt change with stock 
-  - add reviews through a form
-  - star rating based on average of reviews 
-  - interacts with user system
+Mobile First Design: making sure the content fits on all screen sizes will be an essential priority.
 
-- ### wishlist folders
-  - adds to default section when on home page
-  - adds to specific folder when on item modal
-  - add and remove folders on wishlist page/item modal
-    - removing brings up choice of moving all items to default list or removing from wishlist
+Error Handling: currently, the application assumes the firestore database will function correctly, and will break if errors occur.
 
-- ### dev page
-  - form to add items
-  - change item information
-  - see orders
+Purchase Functionality: the purchase button should remove all items in the cart, reduce stock levels for each item, and could open up the possibility of mock payment systems using stripe integration.
 
-- ### general backend improvements
-  - current data pulls/pushes affect the whole collection. 
-    - should affect specific part
-      - eg adding to wishlist only needs to deal with the user document
-  - especially btns and item card is quite complex and could be simplified
-  - standard formatting across pages, features, etc
+Improved Cart Page: the cart page should include total price.
 
+Variant Properties: each variant should have its own stock levels, price and place on the wishlist/cart pages. This would need to be accounted for in potential purchase functionality.
 
-  
+Contact Page: allows users to contact the store with complaints/reviews/inquiries/etc through a form.
+
+Searchbar: component that could allow users to search for items, types, categories, etc, and could make use of filters set by the user.
+
+User System: having multiple users stored as separate documents in firestore. This would require a login/sign up page, and may prompt security systems. This would open up the possibility of having individual wishlist/cart sets and reviews.
+
+Improved Navbar: dropdown button that lists categories, and individual category pages. A currency conversion option could also be included on the navbar, with a default potentially tied to a user system.
+
+Improved Featured Section: items should fade in/out rather than change instantly.
+
+Related Items: related items, based on type, variants, or category, could be included in the modal/wishlist page/cart page.
+
+Wishlist Folders: wishlist items could be sorted into folders that are managed by the user.
+
+Recommended Algorithm: a system that affects the random item selection in the home page. Based on previous purchases, it would increase the likelyhood of types/categories/variants appearing in the recommended section, where the scope of the influence scales with the amount of that property being purchased.
+
+## changelog
+
+V2:
+
+- How data is structured has been updated to two collections based on static/dynamic data.
+- The way data is stored in the browser has changed to context or simply database pulls.
+- Everything that uses that data have been updated to account for this.
+- The old method of pushing/pulling data to an object stored on the browser has been kept for the purposes of creating new data.
+- Item card has been updated to accept child components to reduce props.
+- Item detail components have been implemented.
+- Rerenders based on changes to cart/wishlist is now managed with context.
+- Item modal has now been implemented.
+- Minor changes to styles.
